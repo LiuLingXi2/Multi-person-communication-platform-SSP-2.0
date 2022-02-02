@@ -19,3 +19,7 @@ db: DbManager.cc
 
 uuid: uuid.cc
 	g++ -c -o uuid.o $^
+	
+.SSP: clean
+clean: 
+	rm -f *.o
