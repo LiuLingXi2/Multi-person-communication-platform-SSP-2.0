@@ -12,7 +12,6 @@ private:
 	MYSQL *conn;
 	MYSQL_RES *result;
 	MYSQL_ROW row;
-
 	char mysql_username[256];
 	char mysql_password[256];
 	char mysql_host[256];
@@ -22,7 +21,7 @@ private:
 	void ReadMysqlInfo();
 public:
 	int Init();
-	int initDb();
+	int initDb(std::string host, std::string user, std::string pswd, std::string db_name);
 	int execSql(std::string sql);
 	
 	int GetUserId();

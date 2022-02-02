@@ -4,17 +4,26 @@
 // my library
 #include "color.h"
 #include "macro.h"
-#include "ret_value.h"
+#include "mode_value.h"
+#include "mess_type.h"
+#include "sock_error.h"
+// uuid
+#include "uuid.h"
 // C standard library
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
+#include <stdlib.h>
 // network programming
 #ifdef ____Win32
 #define STATE 0x01 // windows
 #else
 #define STATE 0x02 // linux
 #include <unistd.h>
+#include <sys/time.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
 #endif 
 // proto
 #include "../proto/UserInfo.pb.h"
@@ -31,19 +40,26 @@
 #include "../include/RelationManager.h"
 #include "../include/MessageManager.h"
 #include "../include/PhotoInfo.h"
+// network
+#include "../include/Socket.h"
 // db
 // #include "mysql/mysql.h"
 // cpp
 #include <string>
 #include <iostream>
-#include <unordered_map>
-// uuid
-#include "uuid.h"
+// #include <unordered_map>
 
-#ifdef _D   
+#ifdef _D  
 #define DBG(fmt, args...) printf(fmt, ##args)
 #else
 #define DBG(fmt, args...)
 #endif
+
+#ifdef _S
+#define LOG(str) do \
+{\
+    fprintf(stderr, "[%s:%d %s %s]:%s\r\n",  __FILE__, __LINE__, __DATE__, __TIME__, str); \
+}while(0)
+#endif 
 
 #endif // !__COMMON_H__

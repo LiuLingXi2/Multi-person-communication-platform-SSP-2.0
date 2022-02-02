@@ -23,11 +23,11 @@ void DbManager::ReadMysqlInfo()
 
 int DbManager::Init()
 {
-	int ret = initDb();
+	int ret = initDb("127.0.0.1", "test", "123456", "ssp");
 	set_transection(0);
 	result = NULL;
 #ifdef _D
-	DBG("<mysql> DbManager Init: %d\n" NONE, ret);
+	DBG(GREEN"<mysql> DbManager Init\n" NONE);
 #endif
 	return ret;
 }
@@ -41,7 +41,7 @@ int DbManager::Init()
  * @param db_name
  * @return int
  */
-int DbManager::initDb()
+int DbManager::initDb(std::string host, std::string user, std::string pswd, std::string db_name)
 {
 	// ReadMysqlInfo();
 	conn = mysql_init(NULL);
@@ -173,14 +173,15 @@ int DbManager::GetUsersOneByOne(UserInfo *user)
 		if (row == NULL)
 		{
 #ifdef _D
-			DBG(YELLOW"<mysql> no more user\n" NONE);
+			DBG(GREEN"<mysql> data acquisition completed\n" NONE);
 #endif
 			return DB_NO_MORE_DATA;
 		}
 		ssp::UserInfo pb_user;
+		// 此处的10240指的是UserInfo字段
 		pb_user.ParseFromArray(row[1], 10240);
 #ifdef _D
-		DBG(GREEN"<mysql> user_id:%d,user_name:%s\n" NONE, pb_user.user_id(), pb_user.user_name().c_str());
+		DBG(GREEN"<mysql> user_id: %d,user_name: %s\n" NONE, pb_user.user_id(), pb_user.user_name().c_str());
 #endif
 		user->set_user_id(pb_user.user_id());
 		user->set_user_name(pb_user.user_name().c_str());
