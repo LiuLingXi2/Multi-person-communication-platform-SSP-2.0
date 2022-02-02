@@ -9,12 +9,17 @@
  * 
  */
 
-#include "include/head.h"
+#include "common/common.h"
+
+DbManager *db_svr;
+UserManager *user_svr;
 
 int main(int argc, char **argv, char *env[]) {
-    
-#ifdef DEBUG
-    DBG(YELLOW"Hello World!\n" NONE);
+    db_svr->Init();
+    user_svr->Init(db_svr);
+    user_svr->Start();
+#ifdef _D
+    DBG(GREEN"Hello World!\n" NONE);
 #endif // DEBUG
     return 0;
 }
