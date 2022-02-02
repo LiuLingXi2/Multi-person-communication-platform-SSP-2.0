@@ -1,0 +1,8 @@
+package ssp;
+message MessageInfo {
+	optional int32 verion=1;
+	optional int32 user_id=2;
+	optional int32 message_id=3; // 信息唯一标识ID
+	optional int32 publish_time=4; // 发布时间
+	optional string content=5; // 信息内容
+}

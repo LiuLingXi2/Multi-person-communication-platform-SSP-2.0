@@ -1,0 +1,8 @@
+package ssp;
+message PhotoInfo {
+	optional int32 verion = 1;
+	optional int32 user_id = 2;
+	optional int32 last_publisher = 3; // 最近发布用户
+	optional int32 last_publish_time = 4; // 最近发布时间
+	optional int32 last_publish_message_id = 5; // 最近发布信息唯一标识ID
+}

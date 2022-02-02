@@ -1,0 +1,14 @@
+package ssp;
+message UserInfo {
+	optional uint32 verion = 1; // 版本号
+	optional uint32 user_id = 2; // 用户唯一标识ID
+	optional string user_name = 3; // 账号
+	optional string nick_name = 4; // 昵称
+	optional uint32 reg_time = 5; // 注册时间
+	optional uint32 from = 6;// 注册途径
+	optional uint32 login_time = 7; // 登陆时间
+	optional uint32 last_login_time = 8; // 上次登陆时间
+	optional uint32 fresh_time = 9; // 刷新时间
+	optional string password = 10; // 密码
+	optional uint32 logout_time = 11; // 登出时间
+}
