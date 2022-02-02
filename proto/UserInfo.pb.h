@@ -91,19 +91,19 @@ class UserInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional uint32 verion = 1;
+  // optional int32 verion = 1;
   inline bool has_verion() const;
   inline void clear_verion();
   static const int kVerionFieldNumber = 1;
-  inline ::google::protobuf::uint32 verion() const;
-  inline void set_verion(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 verion() const;
+  inline void set_verion(::google::protobuf::int32 value);
 
-  // optional uint32 user_id = 2;
+  // optional int32 user_id = 2;
   inline bool has_user_id() const;
   inline void clear_user_id();
   static const int kUserIdFieldNumber = 2;
-  inline ::google::protobuf::uint32 user_id() const;
-  inline void set_user_id(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 user_id() const;
+  inline void set_user_id(::google::protobuf::int32 value);
 
   // optional string user_name = 3;
   inline bool has_user_name() const;
@@ -129,40 +129,40 @@ class UserInfo : public ::google::protobuf::Message {
   inline ::std::string* release_nick_name();
   inline void set_allocated_nick_name(::std::string* nick_name);
 
-  // optional uint32 reg_time = 5;
+  // optional int32 reg_time = 5;
   inline bool has_reg_time() const;
   inline void clear_reg_time();
   static const int kRegTimeFieldNumber = 5;
-  inline ::google::protobuf::uint32 reg_time() const;
-  inline void set_reg_time(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 reg_time() const;
+  inline void set_reg_time(::google::protobuf::int32 value);
 
-  // optional uint32 from = 6;
+  // optional int32 from = 6;
   inline bool has_from() const;
   inline void clear_from();
   static const int kFromFieldNumber = 6;
-  inline ::google::protobuf::uint32 from() const;
-  inline void set_from(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 from() const;
+  inline void set_from(::google::protobuf::int32 value);
 
-  // optional uint32 login_time = 7;
+  // optional int32 login_time = 7;
   inline bool has_login_time() const;
   inline void clear_login_time();
   static const int kLoginTimeFieldNumber = 7;
-  inline ::google::protobuf::uint32 login_time() const;
-  inline void set_login_time(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 login_time() const;
+  inline void set_login_time(::google::protobuf::int32 value);
 
-  // optional uint32 last_login_time = 8;
+  // optional int32 last_login_time = 8;
   inline bool has_last_login_time() const;
   inline void clear_last_login_time();
   static const int kLastLoginTimeFieldNumber = 8;
-  inline ::google::protobuf::uint32 last_login_time() const;
-  inline void set_last_login_time(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 last_login_time() const;
+  inline void set_last_login_time(::google::protobuf::int32 value);
 
-  // optional uint32 fresh_time = 9;
+  // optional int32 fresh_time = 9;
   inline bool has_fresh_time() const;
   inline void clear_fresh_time();
   static const int kFreshTimeFieldNumber = 9;
-  inline ::google::protobuf::uint32 fresh_time() const;
-  inline void set_fresh_time(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 fresh_time() const;
+  inline void set_fresh_time(::google::protobuf::int32 value);
 
   // optional string password = 10;
   inline bool has_password() const;
@@ -176,12 +176,12 @@ class UserInfo : public ::google::protobuf::Message {
   inline ::std::string* release_password();
   inline void set_allocated_password(::std::string* password);
 
-  // optional uint32 logout_time = 11;
+  // optional int32 logout_time = 11;
   inline bool has_logout_time() const;
   inline void clear_logout_time();
   static const int kLogoutTimeFieldNumber = 11;
-  inline ::google::protobuf::uint32 logout_time() const;
-  inline void set_logout_time(::google::protobuf::uint32 value);
+  inline ::google::protobuf::int32 logout_time() const;
+  inline void set_logout_time(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:ssp.UserInfo)
  private:
@@ -210,17 +210,17 @@ class UserInfo : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::uint32 verion_;
-  ::google::protobuf::uint32 user_id_;
+  ::google::protobuf::int32 verion_;
+  ::google::protobuf::int32 user_id_;
   ::std::string* user_name_;
   ::std::string* nick_name_;
-  ::google::protobuf::uint32 reg_time_;
-  ::google::protobuf::uint32 from_;
-  ::google::protobuf::uint32 login_time_;
-  ::google::protobuf::uint32 last_login_time_;
+  ::google::protobuf::int32 reg_time_;
+  ::google::protobuf::int32 from_;
+  ::google::protobuf::int32 login_time_;
+  ::google::protobuf::int32 last_login_time_;
   ::std::string* password_;
-  ::google::protobuf::uint32 fresh_time_;
-  ::google::protobuf::uint32 logout_time_;
+  ::google::protobuf::int32 fresh_time_;
+  ::google::protobuf::int32 logout_time_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
@@ -239,7 +239,7 @@ class UserInfo : public ::google::protobuf::Message {
 
 // UserInfo
 
-// optional uint32 verion = 1;
+// optional int32 verion = 1;
 inline bool UserInfo::has_verion() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -250,18 +250,18 @@ inline void UserInfo::clear_has_verion() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void UserInfo::clear_verion() {
-  verion_ = 0u;
+  verion_ = 0;
   clear_has_verion();
 }
-inline ::google::protobuf::uint32 UserInfo::verion() const {
+inline ::google::protobuf::int32 UserInfo::verion() const {
   return verion_;
 }
-inline void UserInfo::set_verion(::google::protobuf::uint32 value) {
+inline void UserInfo::set_verion(::google::protobuf::int32 value) {
   set_has_verion();
   verion_ = value;
 }
 
-// optional uint32 user_id = 2;
+// optional int32 user_id = 2;
 inline bool UserInfo::has_user_id() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -272,13 +272,13 @@ inline void UserInfo::clear_has_user_id() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void UserInfo::clear_user_id() {
-  user_id_ = 0u;
+  user_id_ = 0;
   clear_has_user_id();
 }
-inline ::google::protobuf::uint32 UserInfo::user_id() const {
+inline ::google::protobuf::int32 UserInfo::user_id() const {
   return user_id_;
 }
-inline void UserInfo::set_user_id(::google::protobuf::uint32 value) {
+inline void UserInfo::set_user_id(::google::protobuf::int32 value) {
   set_has_user_id();
   user_id_ = value;
 }
@@ -423,7 +423,7 @@ inline void UserInfo::set_allocated_nick_name(::std::string* nick_name) {
   }
 }
 
-// optional uint32 reg_time = 5;
+// optional int32 reg_time = 5;
 inline bool UserInfo::has_reg_time() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -434,18 +434,18 @@ inline void UserInfo::clear_has_reg_time() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void UserInfo::clear_reg_time() {
-  reg_time_ = 0u;
+  reg_time_ = 0;
   clear_has_reg_time();
 }
-inline ::google::protobuf::uint32 UserInfo::reg_time() const {
+inline ::google::protobuf::int32 UserInfo::reg_time() const {
   return reg_time_;
 }
-inline void UserInfo::set_reg_time(::google::protobuf::uint32 value) {
+inline void UserInfo::set_reg_time(::google::protobuf::int32 value) {
   set_has_reg_time();
   reg_time_ = value;
 }
 
-// optional uint32 from = 6;
+// optional int32 from = 6;
 inline bool UserInfo::has_from() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -456,18 +456,18 @@ inline void UserInfo::clear_has_from() {
   _has_bits_[0] &= ~0x00000020u;
 }
 inline void UserInfo::clear_from() {
-  from_ = 0u;
+  from_ = 0;
   clear_has_from();
 }
-inline ::google::protobuf::uint32 UserInfo::from() const {
+inline ::google::protobuf::int32 UserInfo::from() const {
   return from_;
 }
-inline void UserInfo::set_from(::google::protobuf::uint32 value) {
+inline void UserInfo::set_from(::google::protobuf::int32 value) {
   set_has_from();
   from_ = value;
 }
 
-// optional uint32 login_time = 7;
+// optional int32 login_time = 7;
 inline bool UserInfo::has_login_time() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
@@ -478,18 +478,18 @@ inline void UserInfo::clear_has_login_time() {
   _has_bits_[0] &= ~0x00000040u;
 }
 inline void UserInfo::clear_login_time() {
-  login_time_ = 0u;
+  login_time_ = 0;
   clear_has_login_time();
 }
-inline ::google::protobuf::uint32 UserInfo::login_time() const {
+inline ::google::protobuf::int32 UserInfo::login_time() const {
   return login_time_;
 }
-inline void UserInfo::set_login_time(::google::protobuf::uint32 value) {
+inline void UserInfo::set_login_time(::google::protobuf::int32 value) {
   set_has_login_time();
   login_time_ = value;
 }
 
-// optional uint32 last_login_time = 8;
+// optional int32 last_login_time = 8;
 inline bool UserInfo::has_last_login_time() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
@@ -500,18 +500,18 @@ inline void UserInfo::clear_has_last_login_time() {
   _has_bits_[0] &= ~0x00000080u;
 }
 inline void UserInfo::clear_last_login_time() {
-  last_login_time_ = 0u;
+  last_login_time_ = 0;
   clear_has_last_login_time();
 }
-inline ::google::protobuf::uint32 UserInfo::last_login_time() const {
+inline ::google::protobuf::int32 UserInfo::last_login_time() const {
   return last_login_time_;
 }
-inline void UserInfo::set_last_login_time(::google::protobuf::uint32 value) {
+inline void UserInfo::set_last_login_time(::google::protobuf::int32 value) {
   set_has_last_login_time();
   last_login_time_ = value;
 }
 
-// optional uint32 fresh_time = 9;
+// optional int32 fresh_time = 9;
 inline bool UserInfo::has_fresh_time() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
@@ -522,13 +522,13 @@ inline void UserInfo::clear_has_fresh_time() {
   _has_bits_[0] &= ~0x00000100u;
 }
 inline void UserInfo::clear_fresh_time() {
-  fresh_time_ = 0u;
+  fresh_time_ = 0;
   clear_has_fresh_time();
 }
-inline ::google::protobuf::uint32 UserInfo::fresh_time() const {
+inline ::google::protobuf::int32 UserInfo::fresh_time() const {
   return fresh_time_;
 }
-inline void UserInfo::set_fresh_time(::google::protobuf::uint32 value) {
+inline void UserInfo::set_fresh_time(::google::protobuf::int32 value) {
   set_has_fresh_time();
   fresh_time_ = value;
 }
@@ -603,7 +603,7 @@ inline void UserInfo::set_allocated_password(::std::string* password) {
   }
 }
 
-// optional uint32 logout_time = 11;
+// optional int32 logout_time = 11;
 inline bool UserInfo::has_logout_time() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
@@ -614,13 +614,13 @@ inline void UserInfo::clear_has_logout_time() {
   _has_bits_[0] &= ~0x00000400u;
 }
 inline void UserInfo::clear_logout_time() {
-  logout_time_ = 0u;
+  logout_time_ = 0;
   clear_has_logout_time();
 }
-inline ::google::protobuf::uint32 UserInfo::logout_time() const {
+inline ::google::protobuf::int32 UserInfo::logout_time() const {
   return logout_time_;
 }
-inline void UserInfo::set_logout_time(::google::protobuf::uint32 value) {
+inline void UserInfo::set_logout_time(::google::protobuf::int32 value) {
   set_has_logout_time();
   logout_time_ = value;
 }

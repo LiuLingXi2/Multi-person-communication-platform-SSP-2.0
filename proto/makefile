@@ -1,6 +1,6 @@
 .proto: all
 
-all: proto user rela mess photo mess
+all: proto user rela mess photo messt
 
 proto:
 	protoc --cpp_out=./ *.proto
@@ -17,7 +17,7 @@ mess:
 photo:
 	g++ -c -o photo_pb.o PhotoInfo.pb.cc
 
-mess:
+messt:
 	g++ -c -o mess_pb.o MessType.pb.cc
 
 clean:

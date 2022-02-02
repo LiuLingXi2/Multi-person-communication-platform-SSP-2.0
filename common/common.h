@@ -30,6 +30,7 @@
 #include "../proto/RelationInfo.pb.h"
 #include "../proto/MessageInfo.pb.h"
 #include "../proto/PhotoInfo.pb.h"
+#include "../proto/MessType.pb.h"
 // server
 #include "../include/UserInfo.h"
 #include "../include/RelationInfo.h"
@@ -42,6 +43,7 @@
 #include "../include/PhotoInfo.h"
 // network
 #include "../include/Socket.h"
+#include "../include/MessType.h"
 // db
 // #include "mysql/mysql.h"
 // cpp

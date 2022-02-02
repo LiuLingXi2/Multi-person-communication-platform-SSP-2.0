@@ -8,7 +8,7 @@ message RegReq{
 	optional int32 from = 5;
 };
 
-message RegRsp{
+message RegRep{
 	optional int32 verion = 1;
     optional int32 mess_type = 2; // 402
     optional int32 ret = 3;

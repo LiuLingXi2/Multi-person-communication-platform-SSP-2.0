@@ -23,9 +23,9 @@ namespace {
 const ::google::protobuf::Descriptor* RegReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RegReq_reflection_ = NULL;
-const ::google::protobuf::Descriptor* RegRsp_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* RegRep_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  RegRsp_reflection_ = NULL;
+  RegRep_reflection_ = NULL;
 
 }  // namespace
 
@@ -55,25 +55,25 @@ void protobuf_AssignDesc_MessType_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RegReq));
-  RegRsp_descriptor_ = file->message_type(1);
-  static const int RegRsp_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, verion_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, mess_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, ret_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, user_id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, user_name_),
+  RegRep_descriptor_ = file->message_type(1);
+  static const int RegRep_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, verion_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, mess_type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, ret_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, user_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, user_name_),
   };
-  RegRsp_reflection_ =
+  RegRep_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      RegRsp_descriptor_,
-      RegRsp::default_instance_,
-      RegRsp_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRsp, _unknown_fields_),
+      RegRep_descriptor_,
+      RegRep::default_instance_,
+      RegRep_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegRep, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(RegRsp));
+      sizeof(RegRep));
 }
 
 namespace {
@@ -89,7 +89,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RegReq_descriptor_, &RegReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    RegRsp_descriptor_, &RegRsp::default_instance());
+    RegRep_descriptor_, &RegRep::default_instance());
 }
 
 }  // namespace
@@ -97,8 +97,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_MessType_2eproto() {
   delete RegReq::default_instance_;
   delete RegReq_reflection_;
-  delete RegRsp::default_instance_;
-  delete RegRsp_reflection_;
+  delete RegRep::default_instance_;
+  delete RegRep_reflection_;
 }
 
 void protobuf_AddDesc_MessType_2eproto() {
@@ -111,15 +111,15 @@ void protobuf_AddDesc_MessType_2eproto() {
     "\n\016MessType.proto\022\003ssp\"^\n\006RegReq\022\016\n\006verio"
     "n\030\001 \001(\005\022\021\n\tmess_type\030\002 \001(\005\022\021\n\tuser_name\030"
     "\003 \001(\t\022\020\n\010password\030\004 \001(\t\022\014\n\004from\030\005 \001(\005\"\\\n"
-    "\006RegRsp\022\016\n\006verion\030\001 \001(\005\022\021\n\tmess_type\030\002 \001"
+    "\006RegRep\022\016\n\006verion\030\001 \001(\005\022\021\n\tmess_type\030\002 \001"
     "(\005\022\013\n\003ret\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\005\022\021\n\tuser"
     "_name\030\005 \001(\t", 211);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MessType.proto", &protobuf_RegisterTypes);
   RegReq::default_instance_ = new RegReq();
-  RegRsp::default_instance_ = new RegRsp();
+  RegRep::default_instance_ = new RegRep();
   RegReq::default_instance_->InitAsDefaultInstance();
-  RegRsp::default_instance_->InitAsDefaultInstance();
+  RegRep::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_MessType_2eproto);
 }
 
@@ -535,28 +535,28 @@ void RegReq::Swap(RegReq* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int RegRsp::kVerionFieldNumber;
-const int RegRsp::kMessTypeFieldNumber;
-const int RegRsp::kRetFieldNumber;
-const int RegRsp::kUserIdFieldNumber;
-const int RegRsp::kUserNameFieldNumber;
+const int RegRep::kVerionFieldNumber;
+const int RegRep::kMessTypeFieldNumber;
+const int RegRep::kRetFieldNumber;
+const int RegRep::kUserIdFieldNumber;
+const int RegRep::kUserNameFieldNumber;
 #endif  // !_MSC_VER
 
-RegRsp::RegRsp()
+RegRep::RegRep()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void RegRsp::InitAsDefaultInstance() {
+void RegRep::InitAsDefaultInstance() {
 }
 
-RegRsp::RegRsp(const RegRsp& from)
+RegRep::RegRep(const RegRep& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void RegRsp::SharedCtor() {
+void RegRep::SharedCtor() {
   _cached_size_ = 0;
   verion_ = 0;
   mess_type_ = 0;
@@ -566,11 +566,11 @@ void RegRsp::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-RegRsp::~RegRsp() {
+RegRep::~RegRep() {
   SharedDtor();
 }
 
-void RegRsp::SharedDtor() {
+void RegRep::SharedDtor() {
   if (user_name_ != &::google::protobuf::internal::kEmptyString) {
     delete user_name_;
   }
@@ -578,28 +578,28 @@ void RegRsp::SharedDtor() {
   }
 }
 
-void RegRsp::SetCachedSize(int size) const {
+void RegRep::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* RegRsp::descriptor() {
+const ::google::protobuf::Descriptor* RegRep::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return RegRsp_descriptor_;
+  return RegRep_descriptor_;
 }
 
-const RegRsp& RegRsp::default_instance() {
+const RegRep& RegRep::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_MessType_2eproto();
   return *default_instance_;
 }
 
-RegRsp* RegRsp::default_instance_ = NULL;
+RegRep* RegRep::default_instance_ = NULL;
 
-RegRsp* RegRsp::New() const {
-  return new RegRsp;
+RegRep* RegRep::New() const {
+  return new RegRep;
 }
 
-void RegRsp::Clear() {
+void RegRep::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     verion_ = 0;
     mess_type_ = 0;
@@ -615,7 +615,7 @@ void RegRsp::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool RegRsp::MergePartialFromCodedStream(
+bool RegRep::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -717,7 +717,7 @@ bool RegRsp::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void RegRsp::SerializeWithCachedSizes(
+void RegRep::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional int32 verion = 1;
   if (has_verion()) {
@@ -754,7 +754,7 @@ void RegRsp::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* RegRsp::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* RegRep::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional int32 verion = 1;
   if (has_verion()) {
@@ -793,7 +793,7 @@ void RegRsp::SerializeWithCachedSizes(
   return target;
 }
 
-int RegRsp::ByteSize() const {
+int RegRep::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -844,10 +844,10 @@ int RegRsp::ByteSize() const {
   return total_size;
 }
 
-void RegRsp::MergeFrom(const ::google::protobuf::Message& from) {
+void RegRep::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const RegRsp* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const RegRsp*>(
+  const RegRep* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const RegRep*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -856,7 +856,7 @@ void RegRsp::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void RegRsp::MergeFrom(const RegRsp& from) {
+void RegRep::MergeFrom(const RegRep& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_verion()) {
@@ -878,24 +878,24 @@ void RegRsp::MergeFrom(const RegRsp& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void RegRsp::CopyFrom(const ::google::protobuf::Message& from) {
+void RegRep::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void RegRsp::CopyFrom(const RegRsp& from) {
+void RegRep::CopyFrom(const RegRep& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool RegRsp::IsInitialized() const {
+bool RegRep::IsInitialized() const {
 
   return true;
 }
 
-void RegRsp::Swap(RegRsp* other) {
+void RegRep::Swap(RegRep* other) {
   if (other != this) {
     std::swap(verion_, other->verion_);
     std::swap(mess_type_, other->mess_type_);
@@ -908,11 +908,11 @@ void RegRsp::Swap(RegRsp* other) {
   }
 }
 
-::google::protobuf::Metadata RegRsp::GetMetadata() const {
+::google::protobuf::Metadata RegRep::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = RegRsp_descriptor_;
-  metadata.reflection = RegRsp_reflection_;
+  metadata.descriptor = RegRep_descriptor_;
+  metadata.reflection = RegRep_reflection_;
   return metadata;
 }
 

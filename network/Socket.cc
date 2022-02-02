@@ -59,3 +59,56 @@ int SocketAccept(int clnt_sock, int server_sock)
 #endif
 	return clnt_sock;
 }
+
+int SocketCheckRecv(
+    int clnt_sock, 
+    int mess_type, 
+    unsigned char recv_buffer[10244], 
+    int no_recv_count)
+{
+	int ret = recv(clnt_sock, recv_buffer, 10244, 0);
+	if (ret > 0)
+	{
+		mess_type = GetReqMessType(mess_type, recv_buffer);
+#ifdef _D
+        DBG(PINK"mess_type:%d\n" NONE, mess_type);
+#endif		
+		return mess_type;
+	}
+	else
+	{
+        no_recv_count++;
+		if (no_recv_count > 10)
+		{
+			ClientClose(clnt_sock);
+		}
+	}
+	return -1;
+}
+
+int ClientClose(int clnt_sock)
+{
+	// send_fail_count = 1;
+#ifdef _D
+	DBG(BLUE"Client Disconnect and Closed\n" NONE);
+#endif
+	close(clnt_sock);
+	// accept_flag = 0;
+	return 0;
+}
+
+int SocketClose(int server_sock)
+{
+	close(server_sock);
+	return 0;
+}
+
+int SocketSendRep(int send_size, int clnt_sock, unsigned char send_buffer[10244])
+{
+	int ret = send(clnt_sock, send_buffer, send_size, 0);
+	if (ret < 0)
+	{
+		ClientClose(clnt_sock);
+	}
+	return 0;
+}

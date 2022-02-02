@@ -210,6 +210,45 @@ int DbManager::GetUsersEnd()
 
 int DbManager::InsertUser(UserInfo *user)
 {
+	/* 此处把数据转化成protobuf格式并存储到数据库 */
+	ssp::UserInfo pb_user;
+
+	pb_user.set_verion(1);
+	pb_user.set_user_id(user->user_id());
+	pb_user.set_user_name(user->user_name());
+	pb_user.set_nick_name(user->nick_name());
+	pb_user.set_reg_time(user->reg_time());
+	pb_user.set_from(user->from());
+	pb_user.set_login_time(user->login_time());
+	pb_user.set_last_login_time(user->last_login_time());
+	pb_user.set_fresh_time(user->fresh_time());
+	pb_user.set_password(user->password());
+	pb_user.set_logout_time(user->logout_time());
+
+	char data[10240];
+	pb_user.SerializeToArray(data, pb_user.ByteSize());
+	char user_id[256];
+	sprintf(user_id, "%d", user->user_id());
+	std::string insertSql = "insert into tb_user values(";
+	insertSql += user_id;
+	insertSql += ",'";
+	insertSql += data;
+	insertSql += "');";
+#ifdef _D
+	DBG(BLUE"<mysql> insertSql:%s\n" NONE, insertSql.c_str());
+#endif
+	int ret = mysql_query(conn, insertSql.c_str());
+	if (ret == 0)
+	{
+		return SUCCESS;
+	}
+	else
+	{
+#ifdef _D
+		DBG(YELLOW"<mysql> insert fail : %d %s \n" NONE, ret, mysql_error(conn));
+#endif
+		return DB_QUERY_FAIL;
+	}
 	return SUCCESS;
 }
 

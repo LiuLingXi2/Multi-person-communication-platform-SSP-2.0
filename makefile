@@ -10,5 +10,5 @@ LIB_MYSQL = -L/usr/lib64/mysql -lmysqlclient -lpthread -lz -lm -ldl -lssl -lcryp
 
 all: server client
 
-server: main.cc ./src/*.cc
+server: main.cc ./src/*.cc ./network/*.cc
 	g++ $^ -g -o ./bin/$@ -D _D $(INC_PROTOBUF) $(LIB_PROTOBUF) $(OBJ_SSP) $(LIB_MYSQL)

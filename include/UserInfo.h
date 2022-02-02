@@ -5,7 +5,7 @@
 #include "../common/common.h"
 
 class UserInfo {
-private:
+public:
 	GETSETVAR(int, user_id)
 	GETSETSTR(256, user_name)
 	GETSETSTR(256, nick_name)
@@ -16,6 +16,9 @@ private:
 	GETSETVAR(int, fresh_time)
 	GETSETSTR(256, password)
 	GETSETVAR(int, logout_time)
+	
+	/* 较为特殊，仅限于在对用户进行增删改的时候有效，即在函数SaveUser中使用 */
+	GETSETVAR(int, db_flag)
 };
 
 #endif // !__USER_INFO_H__

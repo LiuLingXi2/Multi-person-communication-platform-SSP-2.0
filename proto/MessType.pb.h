@@ -34,7 +34,7 @@ void protobuf_AssignDesc_MessType_2eproto();
 void protobuf_ShutdownFile_MessType_2eproto();
 
 class RegReq;
-class RegRsp;
+class RegRep;
 
 // ===================================================================
 
@@ -170,14 +170,14 @@ class RegReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class RegRsp : public ::google::protobuf::Message {
+class RegRep : public ::google::protobuf::Message {
  public:
-  RegRsp();
-  virtual ~RegRsp();
+  RegRep();
+  virtual ~RegRep();
 
-  RegRsp(const RegRsp& from);
+  RegRep(const RegRep& from);
 
-  inline RegRsp& operator=(const RegRsp& from) {
+  inline RegRep& operator=(const RegRep& from) {
     CopyFrom(from);
     return *this;
   }
@@ -191,17 +191,17 @@ class RegRsp : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const RegRsp& default_instance();
+  static const RegRep& default_instance();
 
-  void Swap(RegRsp* other);
+  void Swap(RegRep* other);
 
   // implements Message ----------------------------------------------
 
-  RegRsp* New() const;
+  RegRep* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const RegRsp& from);
-  void MergeFrom(const RegRsp& from);
+  void CopyFrom(const RegRep& from);
+  void MergeFrom(const RegRep& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -264,7 +264,7 @@ class RegRsp : public ::google::protobuf::Message {
   inline ::std::string* release_user_name();
   inline void set_allocated_user_name(::std::string* user_name);
 
-  // @@protoc_insertion_point(class_scope:ssp.RegRsp)
+  // @@protoc_insertion_point(class_scope:ssp.RegRep)
  private:
   inline void set_has_verion();
   inline void clear_has_verion();
@@ -293,7 +293,7 @@ class RegRsp : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_MessType_2eproto();
 
   void InitAsDefaultInstance();
-  static RegRsp* default_instance_;
+  static RegRep* default_instance_;
 };
 // ===================================================================
 
@@ -510,144 +510,144 @@ inline void RegReq::set_from(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// RegRsp
+// RegRep
 
 // optional int32 verion = 1;
-inline bool RegRsp::has_verion() const {
+inline bool RegRep::has_verion() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void RegRsp::set_has_verion() {
+inline void RegRep::set_has_verion() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void RegRsp::clear_has_verion() {
+inline void RegRep::clear_has_verion() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void RegRsp::clear_verion() {
+inline void RegRep::clear_verion() {
   verion_ = 0;
   clear_has_verion();
 }
-inline ::google::protobuf::int32 RegRsp::verion() const {
+inline ::google::protobuf::int32 RegRep::verion() const {
   return verion_;
 }
-inline void RegRsp::set_verion(::google::protobuf::int32 value) {
+inline void RegRep::set_verion(::google::protobuf::int32 value) {
   set_has_verion();
   verion_ = value;
 }
 
 // optional int32 mess_type = 2;
-inline bool RegRsp::has_mess_type() const {
+inline bool RegRep::has_mess_type() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void RegRsp::set_has_mess_type() {
+inline void RegRep::set_has_mess_type() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void RegRsp::clear_has_mess_type() {
+inline void RegRep::clear_has_mess_type() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void RegRsp::clear_mess_type() {
+inline void RegRep::clear_mess_type() {
   mess_type_ = 0;
   clear_has_mess_type();
 }
-inline ::google::protobuf::int32 RegRsp::mess_type() const {
+inline ::google::protobuf::int32 RegRep::mess_type() const {
   return mess_type_;
 }
-inline void RegRsp::set_mess_type(::google::protobuf::int32 value) {
+inline void RegRep::set_mess_type(::google::protobuf::int32 value) {
   set_has_mess_type();
   mess_type_ = value;
 }
 
 // optional int32 ret = 3;
-inline bool RegRsp::has_ret() const {
+inline bool RegRep::has_ret() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void RegRsp::set_has_ret() {
+inline void RegRep::set_has_ret() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void RegRsp::clear_has_ret() {
+inline void RegRep::clear_has_ret() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void RegRsp::clear_ret() {
+inline void RegRep::clear_ret() {
   ret_ = 0;
   clear_has_ret();
 }
-inline ::google::protobuf::int32 RegRsp::ret() const {
+inline ::google::protobuf::int32 RegRep::ret() const {
   return ret_;
 }
-inline void RegRsp::set_ret(::google::protobuf::int32 value) {
+inline void RegRep::set_ret(::google::protobuf::int32 value) {
   set_has_ret();
   ret_ = value;
 }
 
 // optional int32 user_id = 4;
-inline bool RegRsp::has_user_id() const {
+inline bool RegRep::has_user_id() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void RegRsp::set_has_user_id() {
+inline void RegRep::set_has_user_id() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void RegRsp::clear_has_user_id() {
+inline void RegRep::clear_has_user_id() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void RegRsp::clear_user_id() {
+inline void RegRep::clear_user_id() {
   user_id_ = 0;
   clear_has_user_id();
 }
-inline ::google::protobuf::int32 RegRsp::user_id() const {
+inline ::google::protobuf::int32 RegRep::user_id() const {
   return user_id_;
 }
-inline void RegRsp::set_user_id(::google::protobuf::int32 value) {
+inline void RegRep::set_user_id(::google::protobuf::int32 value) {
   set_has_user_id();
   user_id_ = value;
 }
 
 // optional string user_name = 5;
-inline bool RegRsp::has_user_name() const {
+inline bool RegRep::has_user_name() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void RegRsp::set_has_user_name() {
+inline void RegRep::set_has_user_name() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void RegRsp::clear_has_user_name() {
+inline void RegRep::clear_has_user_name() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void RegRsp::clear_user_name() {
+inline void RegRep::clear_user_name() {
   if (user_name_ != &::google::protobuf::internal::kEmptyString) {
     user_name_->clear();
   }
   clear_has_user_name();
 }
-inline const ::std::string& RegRsp::user_name() const {
+inline const ::std::string& RegRep::user_name() const {
   return *user_name_;
 }
-inline void RegRsp::set_user_name(const ::std::string& value) {
+inline void RegRep::set_user_name(const ::std::string& value) {
   set_has_user_name();
   if (user_name_ == &::google::protobuf::internal::kEmptyString) {
     user_name_ = new ::std::string;
   }
   user_name_->assign(value);
 }
-inline void RegRsp::set_user_name(const char* value) {
+inline void RegRep::set_user_name(const char* value) {
   set_has_user_name();
   if (user_name_ == &::google::protobuf::internal::kEmptyString) {
     user_name_ = new ::std::string;
   }
   user_name_->assign(value);
 }
-inline void RegRsp::set_user_name(const char* value, size_t size) {
+inline void RegRep::set_user_name(const char* value, size_t size) {
   set_has_user_name();
   if (user_name_ == &::google::protobuf::internal::kEmptyString) {
     user_name_ = new ::std::string;
   }
   user_name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* RegRsp::mutable_user_name() {
+inline ::std::string* RegRep::mutable_user_name() {
   set_has_user_name();
   if (user_name_ == &::google::protobuf::internal::kEmptyString) {
     user_name_ = new ::std::string;
   }
   return user_name_;
 }
-inline ::std::string* RegRsp::release_user_name() {
+inline ::std::string* RegRep::release_user_name() {
   clear_has_user_name();
   if (user_name_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -657,7 +657,7 @@ inline ::std::string* RegRsp::release_user_name() {
     return temp;
   }
 }
-inline void RegRsp::set_allocated_user_name(::std::string* user_name) {
+inline void RegRep::set_allocated_user_name(::std::string* user_name) {
   if (user_name_ != &::google::protobuf::internal::kEmptyString) {
     delete user_name_;
   }
