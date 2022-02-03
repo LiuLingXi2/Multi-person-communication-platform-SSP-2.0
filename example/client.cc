@@ -21,8 +21,8 @@ ssp::RegRep regRsp;
 int ProtoInit() {
     regReq.set_verion(1);
     regReq.set_mess_type(401); // Registration message
-    regReq.set_user_name("ppap");
-    regReq.set_password("12345678");
+    regReq.set_user_name("ping");
+    regReq.set_password("87656743");
     return 0;
 }
 
@@ -61,7 +61,7 @@ int RecvRegRsp() {
         switch (mess_type) {
             case REG_REP:
                 regRsp.ParseFromArray(recv_buffer + 3, 10240);
-                printf("Received RegRsp:\n");
+                printf("Received RegRsp: %s\n", regRsp.user_name().c_str());
                 printf("ret: %d\n", regRsp.ret());
                 printf("user_id: %d\n", regRsp.user_id());
                 if (regRsp.ret() < 0) {
@@ -107,15 +107,15 @@ int main() {
                 break;
             case 2: 
                 ret = RecvRegRsp();
-                n = 1;
-                // if (ret == 0) {
-                //     n = 1; // The packet is successfully received and sent to the server
-                // }
-                // else {
-                //     if (ret == -2) {
-                //         // client_on = 0;
-                //     }
-                // }
+                // n = 1;
+                if (ret == 0) {
+                    n = 1; // The packet is successfully received and sent to the server
+                }
+                else {
+                    if (ret == -2) {
+                        // client_on = 0;
+                    }
+                }
                 break;
             default:
                 // client_on = 0;

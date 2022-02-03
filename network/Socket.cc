@@ -7,7 +7,7 @@ int SocketInit()
     server_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     if (server_sock < 0) {
 #ifdef _D
-        DBG(RED"<socket> socket error\n" NONE);
+        DBG(RED"[%s %s SOCKET ERROR]  socket error\n" NONE, __DATE__, __TIME__);
 #endif
         return SOCKET_INIT_FAIL;
     }
@@ -25,7 +25,7 @@ int SocketInit()
 	ret = bind(server_sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
     if (ret < 0) {
 #ifdef _D
-        DBG(RED"<socket> bind error\n" NONE);
+        DBG(RED"[%s %s SOCKET ERROR] bind error\n" NONE, __DATE__, __TIME__);
 #endif
         return SOCKET_BIND_FAIL;
     }
@@ -33,12 +33,12 @@ int SocketInit()
 	ret = listen(server_sock, 10000);
     if (ret < 0) {
 #ifdef _D
-        DBG(RED"<socket> listen error\n" NONE);
+        DBG(RED"[%s %s SOCKET ERROR] listen error\n" NONE, __DATE__, __TIME__);
 #endif
         return SOCKET_LISTEN_FAIL;
     }
 #ifdef _D
-	DBG(GREEN"Socket Inited\n" NONE);
+	DBG(GREEN"[%s %s SOCK  SERVER] Socket Inited\n" NONE, __DATE__, __TIME__);
 #endif
     return server_sock;
 }
@@ -50,12 +50,12 @@ int SocketAccept(int clnt_sock, int server_sock)
 	clnt_sock = accept(server_sock, (struct sockaddr *)&clnt_addr, &clnt_addr_size);
     if (clnt_sock < 0) {
 #ifdef _D
-        DBG(RED"<socket> accept error\n" NONE);
+        DBG(RED"[%s %s SOCKET ERROR] accept error\n" NONE, __DATE__, __TIME__);
 #endif
         return SOCKET_ACCEPT_FAIL;
     }
 #ifdef _D
-	DBG(GREEN"Socket Accepted\n" NONE);
+	DBG(GREEN"[%s %s SOCK  SERVER] Socket Accepted\n" NONE, __DATE__, __TIME__);
 #endif
 	return clnt_sock;
 }
@@ -90,7 +90,7 @@ int ClientClose(int clnt_sock)
 {
 	// send_fail_count = 1;
 #ifdef _D
-	DBG(BLUE"Client Disconnect and Closed\n" NONE);
+	DBG(BLUE"[%s %s SOCK  SERVER] Client Disconnect and Closed\n" NONE, __DATE__, __TIME__);
 #endif
 	close(clnt_sock);
 	// accept_flag = 0;

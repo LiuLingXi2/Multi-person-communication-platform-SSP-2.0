@@ -1,3 +1,17 @@
+/**
+ * @file common.h
+ * @author lh (2226958871@qq.com)
+ * @brief The following are all the header files needed, including C library, 
+ * C++STL library, C++ standard library, Linux network programming library, 
+ * MySQL link library, Protobuf link library, custom macros and functions library, 
+ * Windows network programming library
+ * @version 0.1
+ * @date 2022-02-03
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
@@ -24,6 +38,14 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/shm.h>
+#include <sys/ipc.h>
+#include <sys/poll.h>
+#include <sys/epoll.h>
 #endif 
 // proto
 #include "../proto/UserInfo.pb.h"
@@ -40,7 +62,7 @@
 #include "../include/UserManager.h"
 #include "../include/RelationManager.h"
 #include "../include/MessageManager.h"
-#include "../include/PhotoInfo.h"
+#include "../include/PhotoManager.h"
 // network
 #include "../include/Socket.h"
 #include "../include/MessType.h"
@@ -55,6 +77,12 @@
 #define DBG(fmt, args...) printf(fmt, ##args)
 #else
 #define DBG(fmt, args...)
+#endif
+
+#ifdef _P  
+#define DATA(fmt, args...) printf(fmt, ##args)
+#else
+#define DATA(fmt, args...)
 #endif
 
 #ifdef _S

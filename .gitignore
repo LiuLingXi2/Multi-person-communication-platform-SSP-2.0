@@ -1,2 +1,2 @@
-config/*.conf
+config/mysql.conf
 

@@ -4,4 +4,5 @@
 
 int GetReqMessType(int mess_type, unsigned char recv_buffer[10244]);
 int SetRspMessType(char *mess_type, unsigned char send_buffer[10244]);
+
 #endif // !__MESS_TYPE_H__

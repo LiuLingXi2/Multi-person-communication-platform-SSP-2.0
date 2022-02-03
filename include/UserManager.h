@@ -4,8 +4,13 @@
 
 #include "../common/common.h"
 
+/**
+ * @brief This class is the UserManager server, which handles user information
+ *
+ */
 
-class UserManager {
+class UserManager
+{
 private:
 	UserInfo users_[10240];
 	GETSETVAR(int, user_count)
@@ -27,7 +32,7 @@ public:
 	int DeleteUser(int user_id);
 	int SaveUsers();
 	int LoginCheck(const char *user_name, const char *user_pswd);
-	int UserLogout(int user_id, int now);
+	int UpdateUserLogoutTime(int user_id, int time_now);
 	int GetUserIdByUserName(const char *user_name);
 	int UpdateUserLoginTime(int user_id, int time_now);
 	int UpdateUserFreshTime(int user_id, int time_now);

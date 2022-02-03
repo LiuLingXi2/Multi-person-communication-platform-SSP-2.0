@@ -27,7 +27,7 @@ int DbManager::Init()
 	set_transection(0);
 	result = NULL;
 #ifdef _D
-	DBG(GREEN"<mysql> DbManager Init\n" NONE);
+	DBG(GREEN"[%s %s MYSQL SERVER] DbManager Init\n" NONE, __DATE__, __TIME__);
 #endif
 	return ret;
 }
@@ -48,7 +48,7 @@ int DbManager::initDb(std::string host, std::string user, std::string pswd, std:
 	if (conn == NULL)
 	{
 #ifdef _D
-		DBG(RED"<mysql> mysql_init fail\n" NONE);
+		DBG(RED"[%s %s MYSQL ERROR] mysql_init fail\n" NONE, __DATE__, __TIME__);
 #endif 
 		return DB_CONN_INIT_FAIL;
 	}
@@ -57,7 +57,7 @@ int DbManager::initDb(std::string host, std::string user, std::string pswd, std:
 	if (conn == NULL)
 	{
 #ifdef _D
-		DBG(RED"<mysql> mysql_real_connect fail\n" NONE);
+		DBG(RED"[%s %s MYSQL ERROR] mysql_real_connect fail\n" NONE, __DATE__, __TIME__);
 #endif 
 		return DB_CONN_CONNECT_FAIL;
 	}
@@ -150,7 +150,7 @@ int DbManager::GetUsersBegin()
 	if (ret)
 	{
 #ifdef _D
-		DBG(YELLOW"[mysql] query fail : %d %s \n" NONE, ret, mysql_error(conn));
+		DBG(YELLOW"[%s %s MYSQL WARNING] query fail : %d %s \n" NONE, __DATE__, __TIME__, ret, mysql_error(conn));
 #endif
 		set_transection(0);
 		return DB_QUERY_FAIL;
@@ -173,15 +173,15 @@ int DbManager::GetUsersOneByOne(UserInfo *user)
 		if (row == NULL)
 		{
 #ifdef _D
-			DBG(GREEN"<mysql> data acquisition completed\n" NONE);
+			// DBG(GREEN"[%s %s MYSQL SERVER] 数据加载完毕\n" NONE, __DATE__, __TIME__);
 #endif
 			return DB_NO_MORE_DATA;
 		}
 		ssp::UserInfo pb_user;
 		// 此处的10240指的是UserInfo字段
 		pb_user.ParseFromArray(row[1], 10240);
-#ifdef _D
-		DBG(GREEN"<mysql> user_id: %d,user_name: %s\n" NONE, pb_user.user_id(), pb_user.user_name().c_str());
+#ifdef _P
+		// DATA(GREEN"[%s %s MYSQL SERVER] user_id: %d,user_name: %s\n" NONE, __DATE__, __TIME__, pb_user.user_id(), pb_user.user_name().c_str());
 #endif
 		user->set_user_id(pb_user.user_id());
 		user->set_user_name(pb_user.user_name().c_str());
@@ -234,8 +234,8 @@ int DbManager::InsertUser(UserInfo *user)
 	insertSql += ",'";
 	insertSql += data;
 	insertSql += "');";
-#ifdef _D
-	DBG(BLUE"<mysql> insertSql:%s\n" NONE, insertSql.c_str());
+#ifdef _P
+	// DATA(BLUE"[MYSQL] insertSql:%s\n" NONE, insertSql.c_str());
 #endif
 	int ret = mysql_query(conn, insertSql.c_str());
 	if (ret == 0)
@@ -245,7 +245,7 @@ int DbManager::InsertUser(UserInfo *user)
 	else
 	{
 #ifdef _D
-		DBG(YELLOW"<mysql> insert fail : %d %s \n" NONE, ret, mysql_error(conn));
+		DBG(YELLOW"[%s %s MYSQL WARNING] insert fail : %d %s \n" NONE, __DATE__, __TIME__, ret, mysql_error(conn));
 #endif
 		return DB_QUERY_FAIL;
 	}
