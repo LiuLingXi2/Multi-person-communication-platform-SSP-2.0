@@ -217,13 +217,13 @@ int DbManager::InsertUser(UserInfo *user)
 	pb_user.set_user_id(user->user_id());
 	pb_user.set_user_name(user->user_name());
 	pb_user.set_nick_name(user->nick_name());
-	pb_user.set_reg_time(user->reg_time());
-	pb_user.set_from(user->from());
-	pb_user.set_login_time(user->login_time());
-	pb_user.set_last_login_time(user->last_login_time());
-	pb_user.set_fresh_time(user->fresh_time());
+	// pb_user.set_reg_time(user->reg_time());
+	// pb_user.set_from(user->from());
+	// pb_user.set_login_time(user->login_time());
+	// pb_user.set_last_login_time(user->last_login_time());
+	// pb_user.set_fresh_time(user->fresh_time());
 	pb_user.set_password(user->password());
-	pb_user.set_logout_time(user->logout_time());
+	// pb_user.set_logout_time(user->logout_time());
 
 	char data[10240];
 	pb_user.SerializeToArray(data, pb_user.ByteSize());

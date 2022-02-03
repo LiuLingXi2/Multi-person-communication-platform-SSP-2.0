@@ -21,7 +21,7 @@ ssp::RegRep regRsp;
 int ProtoInit() {
     regReq.set_verion(1);
     regReq.set_mess_type(401); // Registration message
-    regReq.set_user_name("hank");
+    regReq.set_user_name("ppap");
     regReq.set_password("12345678");
     return 0;
 }
@@ -37,7 +37,6 @@ int SendRegReq() {
     SetReqMessType("401");
     regReq.SerializeToArray(send_buffer + 3, 10240);
 
-    printf("%s\0", send_buffer + 3);
     int size_buffer = sizeof(send_buffer);
     int ret = send(sock, send_buffer, size_buffer, 0);
     if (ret > 0) {
@@ -108,14 +107,15 @@ int main() {
                 break;
             case 2: 
                 ret = RecvRegRsp();
-                if (ret == 0) {
-                    n = 1; // The packet is successfully received and sent to the server
-                }
-                else {
-                    if (ret == -2) {
-                        client_on = 0;
-                    }
-                }
+                n = 1;
+                // if (ret == 0) {
+                //     n = 1; // The packet is successfully received and sent to the server
+                // }
+                // else {
+                //     if (ret == -2) {
+                //         // client_on = 0;
+                //     }
+                // }
                 break;
             default:
                 // client_on = 0;

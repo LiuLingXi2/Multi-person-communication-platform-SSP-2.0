@@ -80,7 +80,7 @@ int UserManager::ShowAll()
 	DBG(GREEN"========================================\n" NONE);
 	for (int i = 0; i < user_count(); i++)
 	{
-		DBG(GREEN"| %d | %s | %s |\n" NONE, users_[i].user_id(), users_[i].user_name(), users_[i].password());
+		DBG(GREEN"| %d | %s | %s |\n" NONE, users_[i].user_id(), users_[i].user_name(), users_[i].nick_name());
 	}
 	DBG(GREEN"========================================\n" NONE);
 #else
@@ -113,16 +113,16 @@ int UserManager::CreateUser(const char *user_name, const char *pswd, int from, i
 
 	if (user_count_ < 10239)
 	{
-		users_[user_count_].set_user_id(time_now); // todo
+		users_[user_count_].set_user_id(2); // todo
 		users_[user_count_].set_user_name(user_name);
 		users_[user_count_].set_nick_name(user_name);
-		users_[user_count_].set_reg_time(time_now);
-		users_[user_count_].set_from(from);
-		users_[user_count_].set_login_time(time_now);
-        users_[user_count_].set_last_login_time(time_now);
-        users_[user_count_].set_fresh_time(time_now);
+		// users_[user_count_].set_reg_time(time_now);
+		// users_[user_count_].set_from(from);
+		// users_[user_count_].set_login_time(time_now);
+        // users_[user_count_].set_last_login_time(time_now);
+        // users_[user_count_].set_fresh_time(time_now);
         users_[user_count_].set_password(pswd);
-        users_[user_count_].set_logout_time(0); // todo
+        // users_[user_count_].set_logout_time(0); // todo
 
 		users_[user_count_].set_db_flag(FLAG_INSERT);
 		user_count_++;
