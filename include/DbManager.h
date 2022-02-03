@@ -12,6 +12,7 @@ private:
 	MYSQL *conn;
 	MYSQL_RES *result;
 	MYSQL_ROW row;
+	GETSETVAR(int, cur_user_id)
 	char mysql_username[256];
 	char mysql_password[256];
 	char mysql_host[256];

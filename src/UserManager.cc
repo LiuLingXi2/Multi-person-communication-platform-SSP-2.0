@@ -9,6 +9,7 @@
 int UserManager::Init(DbManager *db_svr)
 {
 	db_svr_ = db_svr;
+	set_user_count(0);
 #ifdef _D
 	DBG(GREEN "[%s %s USER  SERVER] UserManager Init\n" NONE, __DATE__, __TIME__);
 #endif
@@ -22,6 +23,9 @@ int UserManager::Init(DbManager *db_svr)
  */
 int UserManager::Start()
 {
+	/* The ID is generated from the existing ID in the database each time */
+	int used_user_id = 10000;
+	set_cur_user_id(used_user_id);
 	// Start a transaction and store all user table information in result
 	int ret = db_svr_->GetUsersBegin();
 	int ui = 0;
@@ -62,7 +66,7 @@ int UserManager::Start()
  */
 int UserManager::Proc()
 {
-#ifdef _D
+#ifdef _S
 	DBG(GREEN "[%s %s USER  SERVER] UserManager Proc\n" NONE, __DATE__, __TIME__);
 #endif
 	return SUCCESS;
@@ -145,7 +149,7 @@ int UserManager::CheckExist(int user_id)
 	if (user == NULL)
 	{
 #ifdef _D
-		DBG("[%s %s USER   ERROR] USER_NOT_EXIST %d\n", __DATE__, __TIME__, user_id);
+		DBG(RED"[%s %s USER   ERROR] USER_NOT_EXIST %d\n", __DATE__, __TIME__, user_id);
 #endif
 		return USER_NOT_EXIST;
 	}
@@ -178,9 +182,9 @@ int UserManager::CreateUser(const char *user_name, const char *pswd, int from, i
 	if (user_count_ < ONLINE_NUM)
 	{
 		/* The server assigns a user_id to the user (UUID) */
-		users_[user_count_].set_user_id(2); // todo
+		users_[user_count_].set_user_id(cur_user_id()); // todo
 		users_[user_count_].set_user_name(user_name);
-		users_[user_count_].set_nick_name(user_name);
+		// users_[user_count_].set_nick_name(user_name);
 		// users_[user_count_].set_reg_time(time_now);
 		// users_[user_count_].set_from(from);
 		// users_[user_count_].set_login_time(time_now);
@@ -188,14 +192,17 @@ int UserManager::CreateUser(const char *user_name, const char *pswd, int from, i
 		// users_[user_count_].set_fresh_time(time_now);
 		users_[user_count_].set_password(pswd);
 		// users_[user_count_].set_logout_time(0); // todo
-
+		db_svr_->InsertUser(&users_[user_count_]);
 		/* Identifying user status */
 		users_[user_count_].set_db_flag(FLAG_INSERT);
 		user_count_++;
 	}
 	set_reg_num(reg_num() + 1);
+	set_cur_user_id(cur_user_id() + 1);
+
 	/* Write back to the database */
-	SaveUsers();
+	// SaveUsers();
+	// users_[user_count_].set_db_flag(FLAG_INSERT);
 
 	return 0;
 }
@@ -297,6 +304,7 @@ int UserManager::UpdateUserLogoutTime(int user_id, int time_now)
 		return USER_NOT_EXIST;
 	}
 	user->set_logout_time(time_now);
+	user->set_db_flag(FLAG_UPDATE);
 	return SUCCESS;
 }
 
@@ -336,6 +344,7 @@ int UserManager::UpdateUserLoginTime(int user_id, int time_now)
 		return USER_NOT_EXIST;
 	}
 	user->set_login_time(time_now);
+	user->set_db_flag(FLAG_UPDATE);
 	return SUCCESS;
 }
 
@@ -357,5 +366,6 @@ int UserManager::UpdateUserFreshTime(int user_id, int time_now)
 		return USER_NOT_EXIST;
 	}
 	user->set_fresh_time(time_now);
+	user->set_db_flag(FLAG_UPDATE);
 	return SUCCESS;
 }

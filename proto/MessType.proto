@@ -15,3 +15,147 @@ message RegRep{
     optional int32 user_id = 4;
 	optional string user_name = 5;
 };
+
+message LoginReq{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 101
+	optional string user_name = 3;
+	optional string password = 4;
+};
+
+message LoginRep{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 102
+	optional int32 ret = 3;
+	optional int32 user_id = 4;
+	optional string user_name = 5;
+};
+
+message LogoutReq{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 103
+	optional int32 user_id = 3;
+}
+
+message LogoutRep{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 104
+	optional int32 ret = 3;
+}
+
+message PublishMessageReq{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; //201
+	optional int32 user_id = 3;
+	optional string content = 4;	
+}
+
+message PublishMessageRep{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; //202
+	optional int32 ret = 3;
+}
+
+message GetMessageReq{
+	optional int32 ver = 1;
+    optional int32 mess_type = 2; //203
+	optional int32 user_id = 3;
+}
+
+message MessageBase{
+	optional int32 ver = 1;
+	optional int32 message_id = 2;
+	optional int32 publisher = 3;
+	optional string content = 4;
+	optional int32 publish_time = 5;
+}
+
+message GetMessageRep{
+        optional int32 ver = 1;
+        optional int32 mess_type = 2; // 204
+	optional int32 ret = 3;
+	repeated MessageBase message_list = 4;
+}
+
+message GetPhotoReq{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 205
+	optional int32 user_id = 3;
+};
+
+message GetPhotoRep{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 206
+	optional int32 ret = 3;
+	optional MessageBase last_message = 4;
+}
+
+message AddFriendReq{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 301
+	optional int32 user_id = 3;
+	optional int32 other_id = 4;
+}
+
+message AddFriendRep{
+	optional int32 ver = 1;
+        optional int32 mess_type = 2; // 302
+	optional int32 ret = 3;
+}
+
+message DelFriendReq{
+	optional int32 ver = 1;
+	optional int32 mess_type = 2; // 303
+        optional int32 user_id = 3;
+        optional int32 other_id = 4;
+}
+
+message DelFriendRep{
+	optional int32 ver = 1;
+        optional int32 mess_type = 2; // 304
+        optional int32 ret = 3;
+}
+
+message AddBlackReq{
+        optional int32 ver = 1;
+        optional int32 mess_type = 2; // 305
+        optional int32 user_id = 3;
+        optional int32 other_id = 4;
+}
+
+message AddBlackRep{
+        optional int32 ver = 1;
+        optional int32 mess_type = 2; // 306
+        optional int32 ret = 3;
+}
+
+message DelBlackReq{
+        optional int32 ver = 1;
+        optional int32 mess_type = 2; // 307
+        optional int32 user_id = 3;
+        optional int32 other_id = 4;
+}
+
+message DelBlackRep{
+        optional int32 ver = 1;
+        optional int32 mess_type = 2; // 308
+        optional int32 ret = 3;
+}
+
+/* Below are the messages required for the multi-process model (shared memory) */
+message RelationInfoBase {
+	optional int32 verion = 1;
+	optional int32 user_id = 2;
+	repeated int32 friend_user_id = 3;
+	repeated int32 black_user_id = 4;
+}
+/* user -> relation */
+message UserRelation {
+	optional int32 ver = 1;
+	optional int32 user_id = 2; 
+}
+
+message RelationUser {
+	optional int32 ver = 1;
+	optional RelationInfoBase rela_info = 2; 
+}

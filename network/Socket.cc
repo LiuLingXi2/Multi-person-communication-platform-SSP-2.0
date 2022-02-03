@@ -70,7 +70,7 @@ int SocketCheckRecv(
 	if (ret > 0)
 	{
 		mess_type = GetReqMessType(mess_type, recv_buffer);
-#ifdef _D
+#ifdef _S
         DBG(PINK"mess_type:%d\n" NONE, mess_type);
 #endif		
 		return mess_type;

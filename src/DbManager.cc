@@ -23,6 +23,7 @@ void DbManager::ReadMysqlInfo()
 
 int DbManager::Init()
 {
+	set_cur_user_id(10000);
 	int ret = initDb("127.0.0.1", "test", "123456", "ssp");
 	set_transection(0);
 	result = NULL;
@@ -52,8 +53,8 @@ int DbManager::initDb(std::string host, std::string user, std::string pswd, std:
 #endif 
 		return DB_CONN_INIT_FAIL;
 	}
-	conn = mysql_real_connect(conn, "127.0.0.1", "test", "123456", "ssp", 0, NULL, 0);
-	// conn = mysql_real_connect(conn, host.c_str(), mysql_username, mysql_password, db_name.c_str(), 0, NULL, 0);
+	// conn = mysql_real_connect(conn, "127.0.0.1", "", "", "", 0, NULL, 0);
+	conn = mysql_real_connect(conn, host.c_str(), mysql_username, mysql_password, db_name.c_str(), 0, NULL, 0);
 	if (conn == NULL)
 	{
 #ifdef _D
@@ -117,7 +118,7 @@ int DbManager::GetUserId()
 	// select * from tb_var
 	int used_user_id = 10000;
 	int ret = mysql_query(conn, "select value from tb_var where key_str='user_id';");
-	if (ret)
+	if (ret < 0)
 	{
 		printf("[WARN    ]query user_id fail : %d %s \n", ret, mysql_error(conn));
 		return used_user_id;
@@ -147,7 +148,7 @@ int DbManager::GetUsersBegin()
 	}
 	set_transection(1); // Set to transaction
 	int ret = mysql_query(conn, "select * from tb_user;");
-	if (ret)
+	if (ret < 0)
 	{
 #ifdef _D
 		DBG(YELLOW"[%s %s MYSQL WARNING] query fail : %d %s \n" NONE, __DATE__, __TIME__, ret, mysql_error(conn));
@@ -186,13 +187,14 @@ int DbManager::GetUsersOneByOne(UserInfo *user)
 		user->set_user_id(pb_user.user_id());
 		user->set_user_name(pb_user.user_name().c_str());
 		user->set_nick_name(pb_user.nick_name().c_str());
-		user->set_reg_time(pb_user.reg_time());
-		user->set_from(pb_user.from());
-		user->set_login_time(pb_user.login_time());
-		user->set_last_login_time(pb_user.last_login_time());
-		user->set_fresh_time(pb_user.fresh_time());
-		user->set_password(pb_user.password().c_str());
-		user->set_logout_time(pb_user.logout_time());	
+		// user->set_reg_time(pb_user.reg_time());
+		// user->set_from(pb_user.from());
+		// user->set_login_time(pb_user.login_time());
+		// user->set_last_login_time(pb_user.last_login_time());
+		// user->set_fresh_time(pb_user.fresh_time());
+		// user->set_password(pb_user.password().c_str());
+		// user->set_logout_time(pb_user.logout_time());	
+		
 	}
 	else
 	{
@@ -214,9 +216,9 @@ int DbManager::InsertUser(UserInfo *user)
 	ssp::UserInfo pb_user;
 
 	pb_user.set_verion(1);
-	pb_user.set_user_id(user->user_id());
+	// pb_user.set_user_id(10); // todo
 	pb_user.set_user_name(user->user_name());
-	pb_user.set_nick_name(user->nick_name());
+	// pb_user.set_nick_name(user->nick_name());
 	// pb_user.set_reg_time(user->reg_time());
 	// pb_user.set_from(user->from());
 	// pb_user.set_login_time(user->login_time());
@@ -225,7 +227,7 @@ int DbManager::InsertUser(UserInfo *user)
 	pb_user.set_password(user->password());
 	// pb_user.set_logout_time(user->logout_time());
 
-	char data[10240];
+	char data[10244];
 	pb_user.SerializeToArray(data, pb_user.ByteSize());
 	char user_id[256];
 	sprintf(user_id, "%d", user->user_id());
@@ -234,12 +236,13 @@ int DbManager::InsertUser(UserInfo *user)
 	insertSql += ",'";
 	insertSql += data;
 	insertSql += "');";
-#ifdef _P
-	// DATA(BLUE"[MYSQL] insertSql:%s\n" NONE, insertSql.c_str());
+#ifdef _D
+	DATA(BLUE"[MYSQL] insertSql:%s\n" NONE, insertSql.c_str());
 #endif
 	int ret = mysql_query(conn, insertSql.c_str());
 	if (ret == 0)
 	{
+		set_cur_user_id(cur_user_id() + 1);
 		return SUCCESS;
 	}
 	else

@@ -46,6 +46,7 @@
 #include <sys/ipc.h>
 #include <sys/poll.h>
 #include <sys/epoll.h>
+#include <pthread.h>
 #endif 
 // proto
 #include "../proto/UserInfo.pb.h"
@@ -63,6 +64,7 @@
 #include "../include/RelationManager.h"
 #include "../include/MessageManager.h"
 #include "../include/PhotoManager.h"
+#include "../include/thread_pool.h"
 // network
 #include "../include/Socket.h"
 #include "../include/MessType.h"

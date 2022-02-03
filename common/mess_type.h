@@ -2,8 +2,34 @@
 
 #define __MESS_TYPE_H__
 
-// mess
-#define REG_REQ 401 // request
-#define REG_REP 402 // reply
+#define LOGIN_REQ 101
+#define LOGIN_REP 102
+
+#define LOGOUT_REQ 103
+#define LOGOUT_REP 104
+
+#define ADD_FRIEND_REQ 301
+#define ADD_FRIEND_REP 302
+
+#define DEL_FRIEND_REQ 303
+#define DEL_FRIEND_REP 304
+
+#define ADD_BLACK_REQ 305
+#define ADD_BLACK_REP 306
+
+#define DEL_BLACK_REQ 307
+#define DEL_BLACK_REP 308
+
+#define PUBLISH_MESSAGE_REQ 201
+#define PUBLISH_MESSAGE_REP 202
+
+#define GET_PHOTO_REQ 203
+#define GET_PHOTO_REP 204
+
+#define GET_MESSAGE_LIST_REQ 205
+#define GET_MESSAGE_LIST_REP 206
+
+#define REG_REQ 401
+#define REG_REP 402
 
 #endif // !__MESS_TYPE_H__
